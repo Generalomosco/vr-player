@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1'>
+    <title>360 Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../dist/VRPlayer.css">
+  </head>
+  <body>
+    <style>
+      /*
+      .video {
+       width: 100% !important;
+       height: 50% !important;
+      }
+      .video-wrapper {
+        //margin: 0 auto;
+       width: 90%;
+       height: 100%;
+      }*/
+    </style>
+    <div class="video-wrapper">
+    <video class="video" id="video" controls poster="./poster.png">
+      <source src="./360low.mp4" type='video/mp4'>
+    </video>
+    </div>
+    <script src='js/lib/three/three.min.js'></script>
+    <script src="../dist/VRPlayer.js"></script>
+    <script>
+      const vrPlyr = new VRPlayer('video', {
+        hideVideo: true,
+        projectedIn: 'canvas',
+        controlBar:{
+          items: {
+            'seek-bar':{title:'Time seek bar'},
+            'seek-duration':{title:'Time seek'},
+            'play-pause':{},
+            'volume':{title:'Volume'},
+            'divide':{},
+            'fullscreen':{},
+            'settings-menu':{
+              title:'Settings Menu'
+            }
+          }
+        }
+    });
+     console.log('Main Player instance -> ',vrPlyr);
+     console.log('360 Vitual Reality worker instance -> ',vrPlyr.playVR({projection: '360'}));
+    </script>
+  </body>
+</html>
